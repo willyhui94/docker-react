@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t willyhui94/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true willyhui94/docker-react yarn run test -- --coverage
